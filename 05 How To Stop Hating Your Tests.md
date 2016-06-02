@@ -1,0 +1,40 @@
+# How To Stop Hating Your Tests
+Justin Searls ([@searls](https://twitter.com/@searls))
+
+- test structure
+	- too big to fail
+		- big objects are hard to test (lots of test setup, verifications, test cases)
+		- rule of product (`valid(a,b,c,d)` requires a &times; b &times; c &times; d test cases)
+		- limit objects to **1 public method** with up to **3 dependencies**
+	- tests go off-script
+		- lifecycle of a test: arrange/given + act/when + assert/then
+		- minimize each phase to **1 line**
+	- hard to skim
+		- test code is *untested* code -> keep it simple
+		- **do not generate tests** (no if/forEach in tests!)
+	- accidentially creative tests
+		- convention: name the subject under test `subject` and the result `result`
+		- point out meaningless stuff => test data minimal and minimally meaningful
+- test isolation
+	- test focus
+		- one test-suite for each type of tests (start with two: integrative + isolated)
+		- clear rules for test-suites (e.g. no mocks, no apis, no user interaction)
+	- clear boundaries
+		- realism is not a universal ideal (they are slow, harder to understand, ...)
+	- redundant test coverage
+		-	don't assert stuff you don't want to test
+		- minimize average hits/line
+	- careless mocking
+		- `npm i testdouble`
+- test feedback
+	- useless error messages
+		- **judge assertion libraries on their message quality**, not on their api
+	- slow feedback loops
+		- small differences in time add up (every second in test execution costs)
+	- superlinear build slowdown
+		- most time spent in app + setup/teardown code, less time in test code => as app + setup/teardown grow, tests grow superlinear
+		- **avoid to write new integration tests**
+		- **cap your build duration**
+	- false negatives (red means "unfinished", fix means "fix test")
+		- erode our confidence in tests
+		- caused by redundant code coverage + slow tests
