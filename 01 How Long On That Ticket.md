@@ -1,5 +1,5 @@
 # How Long On That Ticket
-Juan Pablo Buritica (@buritica), Particia Realini (@patricialrealini)
+Juan Pablo Buritica ([@buritica](https://twitter.com/@brutica)), Particia Realini ([@patricialrealini](https://twitter.com/@patriciarealini))
 
 - learn from restaurant kitchens
 - daily kitchen life:

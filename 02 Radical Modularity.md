@@ -1,5 +1,5 @@
 # Radical Modularity
-Aria Stewart (@aredridel)
+Aria Stewart ([@aredridel](https://twitter.com/aredridel))
 
 - definition of a module:
 	- *basic definition:* bit of software with a *defined* interface to the rest of the system
