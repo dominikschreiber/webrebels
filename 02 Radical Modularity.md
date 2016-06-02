@@ -25,3 +25,9 @@ Aria Stewart (@aredridel)
 	- `resolve.sync('@hugo/assets/willi.svg')`
 	- resolve paths by main entry points (different for technologies -- e.g. `index.js` for Javascript, `asset.svg` for svg, ...)
 - simple interfaces win (e.g. unix: everything is a file)
+---
+- naming a package: (unique, meaningful, memorable)
+	- list keywords (e.g. `handlebars-helper-svg`)
+	- join keywords (e.g. proxy require => `proxyquire`)
+	- fancy memorable name
+- modules can be finished (often times half a dozen commits) -- they do one thing well
