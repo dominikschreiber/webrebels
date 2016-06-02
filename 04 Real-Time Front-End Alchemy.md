@@ -1,0 +1,34 @@
+# Real-Time Front-End Alchemy
+Soledad Penadés ([@supersole](https://twitter.com/@supersole))
+
+- **MediaStream** (= stream)
+	- track (== audio/video) containers
+	- any number of tracks per stream
+	- `navigator.mediaDevices.getUserMedia(/* the media you need */).then(stream => /* use stream */)`
+- **MediaRecorder**
+	- encode audio+video in the browser
+- use case ideas:
+	- Beatbox
+	- Sampling based music apps (<- combine with Web MIDI)
+	- Dictaphone
+	- Field recording (<- combine with Geolocation API)
+	- "Vine app" without "app"
+	- Granular + glitch-based audio synthesis (as the browser is way more forgiving than C++)
+- sources
+	- screen (`navigator.mediaDevices.getUserMedia({video: {/* ? */}})`)
+	- canvas (`canvas.captureStream(30/* fps */)`) <- don't use canvas, use WebLG
+	- WebGL
+- **AudioContext:** example stream -> audio context -> stream
+- video+audio creates 2 streams, recording allows only 1, thus
+	- create streams: `let audioStream = new MediaStream()`
+	- and add all tracks to that stream: `inputStream.getAudioTracks().forEach(track => audioStream.addTrack(track))`
+- browser support:
+	- Firefox: full
+	- Chrome: no recording of WebAudio/canvas7
+	- Safari: lolsob
+	- IE: wat
+	- Edge: open for development
+	- FF/Chrome on Android: not really, no hardware acceleration
+- resources:
+	- https://mozdevs.github.io/boo
+	- https://hacks.mozilla.org/2016/04/record-almost-everything-in-the-browser-with-mediarecorder/
