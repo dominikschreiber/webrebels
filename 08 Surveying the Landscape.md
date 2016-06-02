@@ -1,0 +1,31 @@
+# Surveying the Landscape
+Peter Gaston ([@stopsatgreen](https://twitter.com/@stopsatgreen))
+
+- danger: the web gets marginalized
+- threats to the prosperity of the web:
+	- commoditisation (work gets automated)
+	- apps (better ux, more focus)
+		- app-only strategy (e.g. Apple, Snapchat)
+		- iOS + android have ways to open apps instead of web links
+	- advertising/tracking (has chilling effects on users)
+	- monetisation (adblockers caused revenue drop of 22bn $ in 2014)
+		- few centralized websites instead of diverse website landscape
+	- platforms (< 2002: portals; < 2013: search engines; >= 2013: platforms)
+	- the next billion (4bn people online 2018)
+		- mobile by default
+		- surfing is expensive (https://whatdoesmysitecost.com, e.g. 1GB prepaid data ~ 15% avg month income in Myanmar)
+		- *Facebook is the internet*: Instant articles (on Facebook) provide 10&times; the performance of shared stories
+	- messaging platforms
+		- platforms host content on their own (because of *performance*)
+		- bots provide dynamic services
+	- headless (e.g. wearables)
+	- voice / no UI (e.g. Amazon Echo, Google Home)
+- it's not all bad
+	- web-first promises fast growth (see slack etc.)
+	- with electron, web technologies can be used on desktop
+	- *progressive web apps* are best practices for matching expectations users have
+	- *physical web* => beacon sending url, physical notifications
+	- *web bluetooth* => web app pairs with bluetooth devices
+	- *nfc api*
+	- *geolocation api*
+	- *payments api*   
