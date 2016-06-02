@@ -1,0 +1,56 @@
+# HTTP/2 explained
+Daniel Stenberg ([@bagder](https://twitter.com/@bagder))
+
+- HTTP (HTTP/1.0 1996, HTTP/1.1 1997)
+	- for *everything*
+	- web content *changed* (since 2012: +20% objects on website, +200% payload, 50+ requests to single domain)
+	- on average 40+ TCP connections
+	- latency adds up (round-trip time matters)
+	- global request: several hundred milliseconds round-trip-time
+	- workarouds:
+		- image spriting (css/js)
+		- image inlining (data-urls)
+		- concatenation (`cat *.js > single-monster.js`)
+		- multiple subdomains for different requests (`a.c.dn` ... `z.c.dn`)
+- HTTP/2 (start to refresh HTTP/1.1 in 2007, SPDY by Google 2009, SPDY in Google Services 2011, work on HTTP/2 based on SPDY 2012, update to HTTP/1.1 2014, **HTTP/2 2015**)
+	- relation to HTTP/1.1
+		- maintains HTTP paradigms
+		- maintains http:// and https:// urls
+		- proxies convert HTTP/2 <-> HTTP/1.1
+		- less optional parts (everything mandatory)
+		- no minor version
+	- features
+		- *binary* => no telnet, easier framing (raw stream unreadable anyways due to TLS + compression)
+		- *multiplexed* => multiple streams of single connection (**only one TCP connection**)
+		- *streams* with *dependencies* (html > image) => weight can be changed anytime
+		- *header compression* (HPACK)
+		- *server push* => server can send files the client did not request (request HTML, answer HTML+CSS), client can reject
+		- *https-only* => :80 => HTTP/1, :443 => can upgrade
+	- use HTTP/2:
+		- TCP-based HTTP: `Upgrade:` header
+		- TLS-based HTTPS: `ALPN` in the TLS handshake <- all browsers do TLS-HTTPS, so this is the only option
+	- only TLS >= 1.2
+- status
+	- many web servers (e.g. Apache HTTP Server, NGINX)
+	- many browsers (IE 11+, Chrome, Firefox: 26% of requests in 5/2016)
+	- Chrome 51 removed support for SPDY
+	- >50% users use HTTP/2
+- deploy
+	- grab server (Apache/NGINX/...)
+	- grab client (curl, ...)
+	- switch server to HTTPS <- https://letsencrypt.org
+	- 20%-60% faster loading time is common (even more with server push, shorter dependency chains) 
+- future
+	- improve what we have
+		- server push (don't push already cached content)
+		- client certificates (tls re-negotiation was removed, add it again)
+		- cookies
+		- tune TCP for HTTPS
+		- better tools, comparisons
+	- beyond HTTP/2
+		- drop HTTP/1
+		- HTTP/3 will happen faster than HTTP/2 (relative to its predecessor)
+		- QUIC (experiment @ Google) could be a hint to HTTP/3:
+			- implement TCP, TLS, HTTP/2 via UDP in userspace
+			- could solve: head-of-line blocking, congestion control, forward error correction
+			- could drastically improve update time (no kernel updates needed)
