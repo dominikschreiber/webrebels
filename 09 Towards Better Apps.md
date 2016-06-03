@@ -1,0 +1,51 @@
+# Towards Better Apps
+Andreas Bovens ([@andreasbovens](https://twitter/@andreasbovens))
+
+- web <-> native app: complicated
+	- "door-slam" front pages that advertise the native app
+	- "download an app" posters instead of simply advertising urls
+	- 106mb app to control BB-8 droid
+- greatnesses of the web
+	- low-friction
+	- granular privacy control
+- web is evolving
+	- responsive web design is no longer a feature, it's just given
+	- speed is key
+	- lots of device APIs available
+	- except for contacts, all PhoneGap APIs are available as native JS APIs
+- missing features for PWAs (until recently)
+	- home screen persistence
+	- real offline support
+	- push notifications
+	- background sync
+- **progressive** web apps
+	- progressive enhancement with new technologies -> existing website gets enhanced
+	- progressive (h)appiness -> PWA moves from browser to "app"
+- Technology
+	- Web App Manifest: JSON manifest containing metadata
+		- `short_name` + one of `icons` => install banner + home screen
+		- `theme_color` => header bar in task switcher
+		- `background_color` + one of `icons` + `name` => loading screen
+		- `display` => `standalone` (app + notification bar + android buttons) / `fullscreen` (app) / `browser` (like browser), also `@media (display-mode: ${display-mode})` to query it from css
+		- `orientation` => limit orientations (undefined, `portrait`, `landscape`)
+		- `start_url` => url that gets pinned to the home screen (when pinning a child page), common to add `?launchedFromHomeScreen=true` parameter
+		- caveat: launchers cut off/add space to *launcher icons* (-> test w/ huawei UI, custom launchers)
+		- install banner can be intercepted and triggered manually (see http://flipkart.com)
+	- Service Workers: programmable cache
+		- on install: add urls to cache
+		- on activate: re-fetch all content
+		- on fetch: fetch, fall back to cache, fall back to error url
+	- Push API & Notification API: push notifications, user has to enable it
+		- please don't sniff user agents for chrome versions -> do feature detection
+		- push notifications work even if PWA is removed from home screen
+		- notify via email no longer necessary (no need to give away email address)
+	- Background Sync: enqueue message for sending while offline, send when back online
+- early PWA adopters come from asia => the world has changed
+	- mobile-first/mobile-only users in asia/africa
+	- reason: bandwidth costs (especially in asia/africa), PWA update sizes are orders of magnitude smaller than native app update sizes
+- reflections
+	- use PWA to allow users to *save data + money*
+	- *data packages* are so limited that updates are not run
+	- *storage space* is so limited that updates are not run
+	- 7 common native apps: 460mb, the same 7 as PWA: 1mb
+- see https://pwa.rocks
