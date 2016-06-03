@@ -8,37 +8,43 @@ Jamison Dance ([@jergason](https://twitter.com/@jergason))
 	- runs in the browser
 	- compiles to JavaScript
 - *undefined is not a function*
-```javascript
-function foo(num) {
-	if (num > 10) {
-		return 'bar'
+
+	```javascript
+	function foo(num) {
+		if (num > 10) {
+			return 'bar'
+		}
 	}
-}
-console.log(foo(1).toUpperCase())
-```
+	console.log(foo(1).toUpperCase())
+	```
+	
 	- runtime errors happen in JavaScript
 	- *error tracking* developed in/for JavaScript (track:js, raygun.io, ...)
 	- *error preventing* developed in/for JavaScript (eslint, flow, typescript, ...)
 	- plug-in type systems have a problem: they can be plugged off
 - Elm
-```elm
-foo : Int -> Maybe String
-foo num =
-	if num > 10 then Just 'bar'
-	else Nothing
 
-bar num =
-	case foo num of
-		Just str ->
-			String.toUpper str
-		Nothing ->
-			0
-```
+	```elm
+	foo : Int -> Maybe String
+	foo num =
+		if num > 10 then Just 'bar'
+		else Nothing
+	
+	bar num =
+		case foo num of
+			Just str ->
+				String.toUpper str
+			Nothing ->
+				0
+	```
+	
 	- static type system => no runtime errors
 	- algebraic data types
-```elm
-type Maybe a = Just a | Nothing
-```
+	
+	```elm
+	type Maybe a = Just a | Nothing
+	```
+
 - application architecture
 	- React: tree of components, data flows down, actions flow up
 	- Elm
