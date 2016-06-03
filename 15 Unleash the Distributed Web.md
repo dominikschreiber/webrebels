@@ -1,0 +1,37 @@
+# Unleash the Distributed Web
+David Dias ([@daviddias](https://twitter.com/@daviddias))
+
+- dependency on the web causes problems
+- web moved from distributed to centralized due to politic decisions and convenience
+- resource discovery problem
+	- web is fragile due to location addressing (domain => resolve to ip address => contact ip address)
+	- multiple unicasts are expensive (100 clients accessing the same 1 resource cause 100 sends)
+	- problems with the web:
+		- disconnected
+		- bandwidth
+		- offline
+		- performance
+		- security
+		- IoT
+		- control
+- IPFS (the interplanetary filesystem)
+	- protocol to **upgrade the web**, basically a big merkle tree
+	- features:
+		- links do not break
+		- verify what you recieve
+		- works offline
+	- reference element by cryptographic hash (=> MERKLE LINK, see [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree))
+	- IPLD: InterPlanetary Linked Data => links are hashes
+		- http://example.com/hugo resolved to http://10.11.12.13/hugo
+		- /ipns/example.com/hugo resolved to /ipfs/QmW98oJrc5FT6/hugo
+	- distributed resource discovery
+		- p2p routing overlay over IP network => not bound to ip addressing scheme
+		- announce file possession to close nodes (e.g. `hash(f) == 91`, announce to `91&plusmin;5`)
+		- find files by looking in nodes close to hash
+		- [libp2p](https://en.wikipedia.org/wiki/Merkle_tree) is the network stack of IPFS
+- distributed web applications
+	- use cases
+		- content distribution
+		- sensitive data (b/c data is verified)
+		- huge data sizes
+		- webapp w/ components from different endpoints
