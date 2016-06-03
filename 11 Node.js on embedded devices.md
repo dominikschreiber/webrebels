@@ -1,0 +1,31 @@
+# The Eternal Struggle: Node.js on embedded devices
+Jon McKay ([@jonmckay](https://@jonmckay))
+
+- why node.js for embedded devices?
+	- open-source, community-contributed code
+	- package manager
+	- emphasis on building better tools
+	- more flexible language
+- how to build an embedded system w/ node.js:
+	- either a chinese SOC
+	- or a microcontroller w/ english docs
+	- constraints: no operating system, 32mb ram/flash, 180mhz => lua (w/ luajit -- nearly as fast as c)
+	- tessel: compiles js to lua and runs lua on arduino (has parts of node/js re-written in lua)
+	- tessel hardware modules have npm package names for instant use
+- major pitfalls of the tessel 1 architecture
+	- node/js re-written in lua => need to keep up with node updates
+	- proprietary wifi-chip often failing => have to wait for firmware updates due to closed-source
+	- too much power consumption for long-life, not the features of a high power-consumption product
+	- too much over-simplification
+- tessel 2 (-> https://tessel.io)
+	- high power (b/c has wifi)
+	- runs Linux
+	- runs regular Node.js
+	- uses wifi SOC
+- potential tessel 2 pitfalls
+	- wifi built-in to all popular boards
+	- entirely volunteer-driven => fewer resources
+	- RAM might not be sufficient for expectations of Linux
+	- binary modules not as simple as expected
+- why will more embedded devices use Node.js?
+	- high-power chips are not necessarily more expensive than low-power devices (due to large numbers built into smartphones) => only question: has this to run on battery?
