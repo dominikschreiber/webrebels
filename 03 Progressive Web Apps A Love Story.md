@@ -25,4 +25,4 @@ Nolan Lawson ([@nolanlawson](https://twitter.com/@nolanlawson))
 	- FLIP animations (JavaScript animations @ 60fps)
 - best practices from a native app developer:
 	- prefer offline (fast, always there): PouchDB on client, sync with CouchDB on server if entry not found
-	- use background threats (=> web workers): Action Message (UI => web worker) -> Action Handler (web worker) -> Render (virtual DOM, web worker) -> Diff (web worker) -> Patch message (web worker => UI)
+	- use background threads (=> web workers): Action Message (UI => web worker) -> Action Handler (web worker) -> Render (virtual DOM, web worker) -> Diff (web worker) -> Patch message (web worker => UI)
